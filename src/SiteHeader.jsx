@@ -3,6 +3,7 @@ import { ArrowUpRight, Menu, X } from 'lucide-react';
 import GooeyNav from './GooeyNav.jsx';
 
 export const publicAsset = (filename) => import.meta.env.BASE_URL + filename;
+const resumeFilename = 'lihaoran_AI-PM_2026.pdf';
 
 const navigation = [
   { label: 'ABOUT / 关于', href: '#about' },
@@ -42,9 +43,13 @@ export default function SiteHeader({ activeIndex, onChange, floating = false, de
             {item.label}
           </a>
         ))}
+        <a className="mobile-resume-download" href={publicAsset(resumeFilename)}
+          download={resumeFilename} onClick={closeMenu}>
+          简历下载 <ArrowUpRight size={15} aria-hidden="true" />
+        </a>
       </nav>
-      <a className="nav-contact resume-download" href={publicAsset('lihaoran_AI-PM_2026.pdf')}
-        download="lihaoran_AI-PM_2026.pdf">简历下载 <ArrowUpRight size={15} /></a>
+      <a className="nav-contact resume-download" href={publicAsset(resumeFilename)}
+        download={resumeFilename}>简历下载 <ArrowUpRight size={15} /></a>
       <button className="menu-toggle" type="button" aria-label={menuOpen ? '关闭导航' : '打开导航'}
         aria-expanded={menuOpen} aria-controls="site-mobile-nav" onClick={() => setMenuOpen(!menuOpen)}>
         {menuOpen ? <X /> : <Menu />}

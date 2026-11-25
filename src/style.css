@@ -396,4 +396,54 @@
 
 .site-gooey-nav .gooey-nav__list{flex-wrap:nowrap}
 .site-nav .nav-links a[aria-current="page"]{font-weight:700;color:#fff}
+
+.hero-footer{display:contents}
+
+@media(max-width:850px){
+  .site-nav .nav-links.is-open,
+  .site-nav.is-floating .nav-links.is-open{
+    align-items:stretch;
+    padding:8px 18px 12px;
+    border:1px solid #ffffff26;
+    border-radius:0 0 10px 10px;
+    background:rgba(20,21,20,.96);
+    -webkit-backdrop-filter:blur(18px);
+    backdrop-filter:blur(18px);
+    box-shadow:0 14px 30px #0005;
+    max-height:calc(100vh - 90px);
+    max-height:calc(100dvh - 90px);
+    overflow-y:auto;
+  }
+  .site-nav .nav-links.is-open a,
+  .site-nav.is-floating .nav-links.is-open a{
+    display:flex;
+    align-items:center;
+    min-height:44px;
+    padding:10px 4px;
+    border-bottom:1px solid #ffffff26;
+    color:#f4f2ec;
+    font-size:12px;
+  }
+  .site-nav .nav-links.is-open .mobile-resume-download{
+    justify-content:space-between;
+    border-bottom:0;
+  }
+  .hero-footer{
+    display:grid;
+    justify-items:center;
+    gap:8px;
+    position:absolute;
+    inset-inline:22px;
+    bottom:calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index:3;
+  }
+  .hero-footer .hero-scroll,.hero-footer .hero-caption{
+    position:static;
+    max-width:none;
+    transform:none;
+    text-align:center;
+  }
+  .hero-footer .hero-caption{font-size:8px;line-height:1.5}
+  .hero-footer .hero-scroll{font-size:8px;gap:8px;min-height:24px}
+}
 .project-impact .impact-kicker span{color:#aeadA6;font:10px 'Noto Sans SC',sans-serif;letter-spacing:0}

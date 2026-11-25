@@ -175,9 +175,9 @@ function App() {
               const content = card.querySelector('.project-content');
               if (visual && content) {
                 gsap.fromTo(content,
-                  { autoAlpha: 0, x: index % 2 === 0 ? 54 : -54, y: 18 },
+                  { autoAlpha: 0, x: () => window.innerWidth > 850 ? (index % 2 === 0 ? 54 : -54) : 0, y: 18 },
                   { autoAlpha: 1, x: 0, y: 0, duration: 1.1, ease: 'power3.out', clearProps: 'transform,opacity,visibility',
-                    scrollTrigger: { trigger: card, start: 'top 78%', once: true } });
+                    scrollTrigger: { trigger: card, start: 'top 78%', once: true, invalidateOnRefresh: true } });
               }
             });
           }
@@ -196,7 +196,10 @@ function App() {
         <div className="hero-meta"><span>INDEPENDENT PRODUCT THINKER</span><span>SHENZHEN · CHINA · 2026</span></div>
         <div className="hero-heading"><h1 className="hero-word" id="hero-title"><span>LI HAORAN’S</span><span>PERSONAL CENTER</span></h1><p className="hero-subtitle"><span>DESIGN IS</span> <strong>HOW IT WORKS.</strong></p><div className="hero-personal-name"><span>李浩然</span><small>LEON LEE</small></div></div>
         <div className="hero-bottom"><SpecularSurface className="hero-intro" radius={14} tint="#cbd0d2" tintOpacity={0.07} blur={22} textColor="#f4f2ec" lineColor="#d8dcde" baseColor="#aeb4b8" intensity={1.15} idleIntensity={0.18} shineSize={8} shineFade={28} thickness={1.15} glow={0.9} speed={0.3} followMouse proximity={300}><p className="hero-cn">让复杂的事<br/><em>变得清晰而有用</em></p><p>李浩然 Leon · AI / 产品经理 / UX<br/>连接用户需求、产品策略与技术落地。</p><a className="red-button" href="#work">项目查看 <ArrowUpRight size={16}/></a></SpecularSurface><p className="hero-aside">DESIGN IS<br/><em>HOW IT WORKS.</em></p></div>
-        <a className="hero-scroll" href="#about"><span>SCROLL TO EXPLORE</span><ArrowDown size={14}/></a><span className="hero-caption">USER EXPERIENCE / AI APPLICATION / PRODUCT STRATEGY</span>
+        <div className="hero-footer">
+          <a className="hero-scroll" href="#about"><span>SCROLL TO EXPLORE</span><ArrowDown size={14}/></a>
+          <span className="hero-caption">USER EXPERIENCE / AI APPLICATION / PRODUCT STRATEGY</span>
+        </div>
       </section>
       <section className="about section-shell about-page about-page-intro" id="about">
         <div className="section-label"><span>ABOUT / 关于</span><span>产品思维 / 设计背景 / 国际视野</span></div>
