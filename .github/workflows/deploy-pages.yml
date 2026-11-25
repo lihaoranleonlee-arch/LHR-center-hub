@@ -38,6 +38,9 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: dist
+      # Pages can briefly report no artifact immediately after upload succeeds.
+      - name: Allow Pages artifact metadata to propagate
+        run: sleep 10
       - name: Deploy site
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5.0.1
