@@ -110,13 +110,27 @@ const designProjects = [
 const reservedSlots = Array.from({ length: 6 }, (_, index) => String(index + 1).padStart(2, '0'))
   .filter(number => !designProjects.some(project => project.number === number));
 
-function DesignImage({ project, image, eager = false }) {
-  const url = publicAsset(`design/${project.slug}/${image.file}`);
+const designImageWidths = [720, 1200, 1920];
+const designImageSizes = {
+  cover: '(max-width: 850px) calc(100vw - 44px), min(48vw, 810px)',
+  wide: '(max-width: 850px) calc(100vw - 44px), min(88vw, 1480px)',
+  gallery: '(max-width: 560px) calc(100vw - 44px), (max-width: 850px) calc(50vw - 29px), min(44vw - 7px, 733px)',
+};
+
+function DesignImage({ project, image, cover = false, eager = false }) {
+  const path = `design/${project.slug}/${image.file}`;
+  const url = publicAsset(path);
+  const stem = path.replace(/\.jpg$/, '');
+  const webpSources = designImageWidths.map(width => `${publicAsset(`${stem}-${width}.webp`)} ${width}w`).join(', ');
+  const sizes = designImageSizes[cover ? 'cover' : image.wide ? 'wide' : 'gallery'];
   return (
     <a className="design-image" href={url} target="_blank" rel="noopener"
       aria-label={`在新标签页查看：${image.alt}`}>
-      <img src={url} alt={image.alt} width="1920" height="1080"
-        loading={eager ? 'eager' : 'lazy'} decoding="async" />
+      <picture>
+        <source type="image/webp" srcSet={webpSources} sizes={eager ? sizes : `auto, ${sizes}`} />
+        <img src={url} alt={image.alt} width="1920" height="1080"
+          loading={eager ? 'eager' : 'lazy'} fetchPriority={eager ? 'high' : undefined} decoding="async" />
+      </picture>
       {image.label && <span className="design-image-label" aria-hidden="true">{image.label}</span>}
       <span className="design-image-open" aria-hidden="true"><ArrowUpRight size={15} /></span>
     </a>
@@ -127,7 +141,7 @@ function DesignProject({ project, eager }) {
   return (
     <article className="design-project" aria-labelledby={project.slug}>
       <div className="project-card design-project-main">
-        <DesignImage project={project} image={project.cover} eager={eager} />
+        <DesignImage project={project} image={project.cover} cover eager={eager} />
         <div className="project-content design-project-copy">
           <header className="project-heading">
             <p className="design-project-label">{project.number} / {project.category}</p>

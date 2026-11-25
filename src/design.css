@@ -32,6 +32,8 @@
   transition: translate .25s ease;
 }
 
+.design-image picture { display: block; }
+
 .design-image img {
   display: block;
   width: 100%;
