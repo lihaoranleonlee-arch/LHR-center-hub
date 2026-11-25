@@ -226,7 +226,7 @@ function App() {
         <div className="section-label"><span>CAPABILITIES / 能力</span><span>02 / 海外工作经历</span></div>
         <div className="capability-heading"><h2>海外工作经历</h2><p>在欧洲项目中积累产品设计与本地化实践。</p></div>
         <div className="experience-list experience-list--overseas">
-          <article className="experience-entry"><div className="experience-entry-meta"><span>2022.08 — 2023.02</span><span className="experience-role">产品设计师实习</span></div><h3>JAC 江淮汽车意大利设计中心</h3><div className="experience-copy"><p>参与海外产品设计与本地化优化工作，结合欧洲市场用户习惯优化产品视觉与交互表达方式。</p><p>参与阿尔法·罗密欧、法拉利等品牌相关设计项目，协同设计团队推进方案验证与落地。</p><p>参与产品概念设计与方案验证，支持多语言场景下的产品表达与内容适配。</p></div></article>
+          <article className="experience-entry"><div className="experience-entry-meta"><span>2022.08 — 2023.02</span><span className="experience-role">产品设计师实习</span></div><h3>JAC 江淮汽车意大利设计中心</h3><div className="experience-copy"><p>参与 JAC 欧洲市场本地化设计项目，结合欧洲用户习惯优化视觉与交互表达；支持多语言场景内容适配。</p><p>参与意大利本土品牌用户体验与交互式设计趋势研究。</p><p>参与产品概念设计与方案验证，支持多语言场景下的产品表达与内容适配。</p></div></article>
           <article className="experience-entry"><div className="experience-entry-meta"><span>2020.09 — 2021.02</span><span className="experience-role">产品设计师实习</span></div><h3>MM S.p.A. 米兰市政基础设施公司</h3><div className="experience-copy"><p>参与产品外观与结构设计优化，支持产品从概念到样机阶段的设计验证。</p><p>协助公司完成欧盟限塑法令相关的可持续设计项目，包括流程建模与场景验证。</p><p>通过用户研究与利益相关者访谈，识别服务流程中的痛点与优化机会。</p></div></article>
         </div>
       </section>
