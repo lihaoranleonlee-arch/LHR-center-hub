@@ -136,7 +136,7 @@ function App() {
           const title = section.querySelector('.about-copy h2, .section-title h2, .capability-heading h2, .about-skills-heading h2, .contact-main h2');
           const label = section.querySelector('.section-label');
           const contentSelector = [
-            '.about-layout > *', '.education-item', '.experience-entry-meta', '.experience-entry h3',
+            '.about-layout > .about-copy', '.education-item', '.experience-entry-meta', '.experience-entry h3',
             '.experience-copy--grid > p', '.experience-list--overseas > .experience-entry',
             '.about-capability-card', '.metrics > div', '.toolkit-card', '.language-panel > div',
             '.contact-main .eyebrow', '.contact-main .red-button', '.contact-aside', '.footer > *'
@@ -157,17 +157,17 @@ function App() {
               title ? 0.62 : 0.18);
           }
 
-          const visuals = [...section.querySelectorAll('.about-portrait, .project-visual-wrap')];
-          visuals.forEach((visual, index) => {
-            const img = visual.querySelector('img');
-            gsap.fromTo(visual,
-              { clipPath: 'inset(0 0 100% 0 round 12px)' },
-              { clipPath: 'inset(0 0 0% 0 round 12px)', duration: 1.35, ease: 'power3.inOut',
-                scrollTrigger: { trigger: visual, start: 'top 84%', once: true }, delay: index * 0.08 });
-            if (img && !visual.closest('.project-workflow')) gsap.fromTo(img, { scale: 1.075 }, { scale: 1, duration: 1.65, ease: 'power3.out', scrollTrigger: { trigger: visual, start: 'top 84%', once: true } });
-            if (img && !visual.closest('.project-knowledge, .project-workflow')) gsap.fromTo(img,
-              { yPercent: -3 }, { yPercent: 3, ease: 'none', scrollTrigger: { trigger: visual, start: 'top bottom', end: 'bottom top', scrub: 0.8 } });
-          });
+          const portrait = section.querySelector('.about-portrait');
+          const portraitImage = portrait?.querySelector('img');
+          if (portraitImage) {
+            gsap.fromTo(portraitImage, { scale: 1.075 }, {
+              scale: 1,
+              duration: 1.65,
+              ease: 'power3.out',
+              immediateRender: false,
+              scrollTrigger: { trigger: portrait, start: 'top 84%', once: true },
+            });
+          }
 
           if (isWork) {
             section.querySelectorAll('.project-card').forEach((card, index) => {

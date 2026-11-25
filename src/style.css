@@ -398,6 +398,7 @@
 .site-nav .nav-links a[aria-current="page"]{font-weight:700;color:#fff}
 
 .hero-footer{display:contents}
+.about-portrait,.project-card .project-visual{border-radius:12px}
 
 @media(max-width:850px){
   .site-nav .nav-links.is-open,
